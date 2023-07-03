@@ -1,8 +1,5 @@
-// import { useState } from 'react'
 
 export default function ToDoList(props) {
-    // const [todos, setToDos] = useState([...props.todos])
-
     function toggleToDo(id, isCompleted) {
         props.setToDos(currentItems => {
             return currentItems.map(item => {
@@ -23,15 +20,22 @@ export default function ToDoList(props) {
         })
     }
 
+    if (props.todos.length <= 0) {
+        return 'List empty'
+    }
+
+    console.log('props.todos')
+    console.log(props.todos)
+
     return <ul className='list'>
         {
             props.todos.map((todo => {
                 return <li key={todo.id}>
                     <label>
-                        <input type="checkbox" checked={todo.isCompleted} onChange={e => toggleToDo(todo.id, e.target.checked)} />
+                        <input type="checkbox" className='form-check-input' checked={todo.isCompleted} onChange={e => toggleToDo(todo.id, e.target.checked)} />
                         {todo.title}
                     </label>
-                    <button onClick={e => Delete(todo.id)}>delete</button>
+                    <button className="btn-delete-item" onClick={e => Delete(todo.id)}>delete</button>
                 </li>
 
             }))

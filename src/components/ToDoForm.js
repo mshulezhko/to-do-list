@@ -14,6 +14,7 @@ export default function ToDoForm() {
     function handleTodoItems(e) {
         e.preventDefault()
         setToDos([...todos, { title: newItem, id: crypto.randomUUID(), isCompleted: false }])
+        setNewItem('')
 
     }
 
@@ -21,19 +22,19 @@ export default function ToDoForm() {
         localStorage.setItem('ITEMS', JSON.stringify(todos))
     }, [todos])
 
-    return <>
+    return <div className='container'>
         <form onSubmit={handleTodoItems}>
             <div className="row">
-                <div className="col-6">
-                    <label htmlFor="form-input">New Item</label>
+                <div className="col">
+                    <label htmlFor="form-input">New Item🍭</label>
                     <input value={newItem} onChange={(e) => { setNewItem(e.target.value) }} type="text" id='form-input' />
                 </div>
-                <div className="col-3">
-                    <input type="submit" className='btn btn-primary btn-lg' value='Add' />
+                <div className="col">
+                    <input type="submit" className='btn-add-item' value='Add' />
                 </div>
             </div>
         </form>
-        <h1 className='header'>To do lost {newItem}</h1>
+        <h1 className='header'>To do list</h1>
         <ToDoList todos={todos} setToDos={setToDos} />
-    </>
+    </div>
 }
