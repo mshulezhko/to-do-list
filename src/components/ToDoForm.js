@@ -13,9 +13,10 @@ export default function ToDoForm() {
 
     function handleTodoItems(e) {
         e.preventDefault()
-        setToDos([...todos, { title: newItem, id: crypto.randomUUID(), isCompleted: false }])
-        setNewItem('')
-
+        if (newItem.length > 0) {
+            setToDos([...todos, { title: newItem, id: crypto.randomUUID(), isCompleted: false }])
+            setNewItem('')
+        }
     }
 
     useEffect(() => {

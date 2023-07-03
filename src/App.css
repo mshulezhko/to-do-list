@@ -63,3 +63,9 @@ form {
 .name-item {
   color: #023047;
 }
+
+footer {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+}
