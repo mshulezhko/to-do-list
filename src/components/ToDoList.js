@@ -24,14 +24,11 @@ export default function ToDoList(props) {
         return 'List empty'
     }
 
-    console.log('props.todos')
-    console.log(props.todos)
-
     return <ul className='list'>
         {
             props.todos.map((todo => {
                 return <li key={todo.id}>
-                    <label>
+                    <label className="name-item">
                         <input type="checkbox" className='form-check-input' checked={todo.isCompleted} onChange={e => toggleToDo(todo.id, e.target.checked)} />
                         {todo.title}
                     </label>
